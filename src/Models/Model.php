@@ -23,7 +23,7 @@ class Model
     public function __construct($name)
     {
         $this->name = class_basename($name);
-        $this->namespace = trim(implode('\\', array_slice(explode('\\', str_replace('/', '\\', $name)), 0, -1)), '\\');
+        $this->namespace = trim(implode('\\', array_slice(explode('\\', str_replace('/', '\\', str_replace(config('blueprint.models_namespace'), '', $name))), 0, -1)), '\\');
     }
 
     public function name(): string
